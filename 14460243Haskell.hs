@@ -48,9 +48,19 @@ fibonacci 0 = 0
 fibonacci 1 = 1
 fibonacci x = fibonacci(x-1) + fibonacci(x-2)
 
+fibList a = [fibonacci x | x <- [0..a-1]]
+
 -- Factorial
 factorial :: Int -> Int
 factorial n = product [1..n]
+
+-- Insertar en medio de una lista
+inmid :: Num a => [a] -> a -> [a]
+inmid y x = ((take ((length y) `div` 2) y) ++ [x] ++ (reverse (take ((length y) `div` 2) (reverse y))))
+
+-- Insertar en lugar seleccionado de una lista
+inpos :: Num a => [a] -> a -> Int -> [a]
+inpos y x pos = (take pos y ++ [x] ++ reverse (take (length y - pos) (reverse y)))
 
 -- Definición de clase de tipos
 lucky :: (Integral a) => a -> String
