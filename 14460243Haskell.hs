@@ -76,3 +76,12 @@ weekDay 5 = "Jueves"
 weekDay 6 = "Viernes"
 weekDay 7 = "Sábado"
 weekDay x = "Inválido"
+
+
+-- Rotación izquierda
+rotacionIZQ :: Num a => [a] -> [a]
+rotacionIZQ a = tail a ++ [head a]
+
+-- Rotación derecha
+rotacionDER :: Num a => [a] -> [a]
+rotacionDER a = last a : init a
