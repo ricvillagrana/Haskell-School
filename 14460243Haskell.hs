@@ -3,6 +3,8 @@
 --	Hecho por Ricardo Villagrana	--
 ------------------------------------------
 
+-- Imports
+import Data.List
 
 -- Raiz cuadrada de equación cuadrática
 -- sqrtEc(a, b, c)
@@ -85,3 +87,17 @@ rotacionIZQ a = tail a ++ [head a]
 -- Rotación derecha
 rotacionDER :: Num a => [a] -> [a]
 rotacionDER a = last a : init a
+
+-- Rotación con movimiento y dirección
+rotar lista cantidad movimiento
+    | movimiento == 'I' || movimiento == 'i' = drop n1 lista ++ take n1 lista
+    | movimiento == 'D' || movimiento == 'd' = drop n2 lista ++ take n2 lista
+    | otherwise = error "Movimiento no válido"
+    where   n2 = if(cantidad <= length lista) then (length lista - cantidad) else (length lista - (cantidad `mod` length lista))
+            n1 = if(cantidad <= length lista) then cantidad else (cantidad `mod` length lista) 
+
+-- Eliminar la primera incidencia de un número de una lista
+-- Usa la librería de uso de listas
+eliminaItem lista num = (lista \\ [num])
+-- Sugerido pero menos óptimo (pero pensamos más)
+eliminaItem' lista num = takeWhile(/=num) lista ++ tail (dropWhile(/=num) lista)
