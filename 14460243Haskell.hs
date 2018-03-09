@@ -101,3 +101,10 @@ rotar lista cantidad movimiento
 eliminaItem lista num = (lista \\ [num])
 -- Sugerido pero menos óptimo (pero pensamos más)
 eliminaItem' lista num = takeWhile(/=num) lista ++ tail (dropWhile(/=num) lista)
+
+-- Verificar si es palíndromo
+palindromo palabra = if (palabra == reverse palabra) then True else False
+
+-- Eliminar todas las incidencias
+eliminaAll lista caracter = [ x | x <- lista, x /= caracter ]
+
